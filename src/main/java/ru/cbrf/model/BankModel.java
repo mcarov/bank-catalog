@@ -4,8 +4,8 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 import org.apache.commons.lang3.time.DateUtils;
 import ru.cbrf.domain.Bank;
-
 import java.text.ParseException;
+
 @Data
 @NoArgsConstructor
 public class BankModel {

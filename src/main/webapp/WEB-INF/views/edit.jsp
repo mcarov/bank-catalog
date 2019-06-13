@@ -56,18 +56,18 @@
                     <div class="form-group">
                         <% Optional<String> real = Optional.ofNullable(bank.getReal()); %>
                         <label for="real">Код контроля допустимости проведения расчетных операций</label>
-                        <input id="real" name="real" class="form-control" type="text" value="<%=real.orElse("")%>">
+                        <input id="real" name="real" class="form-control" type="text" value='<%=real.orElse("")%>'>
                     </div>
                     <div class="form-group">
                         <% Optional<String> pzn = Optional.ofNullable(bank.getPzn()); %>
                         <label for="pzn">Код типа участника расчетов</label>
                         <select name="pzn" id="pzn" class="custom-select">
-                            <% for(Pzn item: pznList) { %>
-                            <% if(StringUtils.equalsIgnoreCase(pzn.orElse(""), item.getPzn())) {%>
-                                <option title="<%=item.getPzn()%>" selected><%=item.getName()%></option>
-                            <% } else { %>
-                                <option title="<%=item.getPzn()%>"><%=item.getName()%></option>
-                            <% } %>
+                            <% for(Pzn item : pznList) { %>
+                            <option title='<%=item.getPzn()%>' value='<%=item.getPzn()%>'
+                                <% if(StringUtils.equalsIgnoreCase(pzn.orElse(""), item.getPzn())) { %>
+                                    selected
+                                <% } %>
+                            ><%=item.getName()%></option>
                             <% } %>
                         </select>
                     </div>
@@ -75,12 +75,12 @@
                         <% Optional<String> uer = Optional.ofNullable(bank.getUer()); %>
                         <label for="uer">Код пользователя системы электронных расчетов</label>
                         <select name="uer" id="uer" class="custom-select">
-                            <% for(Uer item: uerList) { %>
-                            <% if(StringUtils.equalsIgnoreCase(uer.orElse(""), item.getUer())) {%>
-                            <option title="<%=item.getUer()%>" selected><%=item.getName()%></option>
-                            <% } else { %>
-                            <option title="<%=item.getUer()%>"><%=item.getName()%></option>
-                            <% } %>
+                            <% for(Uer item : uerList) { %>
+                            <option title='<%=item.getUer()%>' value='<%=item.getUer()%>'
+                                <% if(StringUtils.equalsIgnoreCase(uer.orElse(""), item.getUer())) { %>
+                                    selected
+                                <% } %>
+                            ><%=item.getName()%></option>
                             <% } %>
                         </select>
                     </div>
@@ -88,79 +88,75 @@
                         <% Optional<String> rgn = Optional.ofNullable(bank.getRgn()); %>
                         <label for="rgn">Код территории Российской Федерации</label>
                         <select name="rgn" id="rgn" class="custom-select">
-                            <% for(Rgn item: rgnList) { %>
-                            <% if(StringUtils.equalsIgnoreCase(rgn.orElse(""), item.getRgn())) {%>
-                            <option title="<%=item.getRgn()%>" selected><%=item.getName()%></option>
-                            <% } else { %>
-                            <option title="<%=item.getRgn()%>"><%=item.getName()%></option>
-                            <% } %>
+                            <% for(Rgn item : rgnList) { %>
+                            <option title='<%=item.getRgn()%>' value='<%=item.getRgn()%>'
+                                <% if(StringUtils.equalsIgnoreCase(rgn.orElse(""), item.getRgn())) { %>
+                                    selected
+                                <% } %>
+                            ><%=item.getName()%></option>
                             <% } %>
                         </select>
                     </div>
                     <div class="form-group">
                         <% Optional<String> ind = Optional.ofNullable(bank.getInd()); %>
                         <label for="ind">Индекс</label>
-                        <input id="ind" name="ind" class="form-control" type="text" value="<%=ind.orElse("")%>">
+                        <input id="ind" name="ind" class="form-control" type="text" value='<%=ind.orElse("")%>'>
                     </div>
                     <div class="form-group">
                         <% Optional<String> tnp = Optional.ofNullable(bank.getTnp()); %>
                         <label for="tnp">Код типа населенного пункта</label>
                         <select name="tnp" id="tnp" class="custom-select">
-                            <option>НЕ ОПРЕДЕЛЕН</option>
-                            <% for(Tnp item: tnpList) { %>
-                            <% if(StringUtils.equalsIgnoreCase(tnp.orElse(""), item.getTnp())) {%>
-                            <option title="<%=item.getTnp()%>" selected><%=item.getFullName()%></option>
-                            <% } else { %>
-                            <option title="<%=item.getTnp()%>"><%=item.getFullName()%></option>
-                            <% } %>
+                            <option value=''>НЕ ОПРЕДЕЛЕН</option>
+                            <% for(Tnp item : tnpList) { %>
+                            <option title='<%=item.getTnp()%>' value='<%=item.getTnp()%>'
+                                <% if(StringUtils.equalsIgnoreCase(tnp.orElse(""), item.getTnp())) { %>
+                                    selected
+                                <% } %>
+                            ><%=item.getFullName()%></option>
                             <% } %>
                         </select>
                     </div>
                     <div class="form-group">
                         <% Optional<String> nnp = Optional.ofNullable(bank.getNnp()); %>
                         <label for="nnp">Населенный пункт</label>
-                        <input id="nnp" name="nnp" class="form-control" type="text" value="<%=nnp.orElse("")%>">
+                        <input id="nnp" name="nnp" class="form-control" type="text" value='<%=nnp.orElse("")%>'>
                     </div>
                     <div class="form-group">
                         <% Optional<String> adr = Optional.ofNullable(bank.getAdr()); %>
                         <label for="adr">Адрес</label>
-                        <input id="adr" name="adr" class="form-control" type="text" value="<%=adr.orElse("")%>">
+                        <input id="adr" name="adr" class="form-control" type="text" value='<%=adr.orElse("")%>'>
                     </div>
                     <div class="form-group">
                         <% Optional<String> rkc = Optional.ofNullable(bank.getRkc()); %>
                         <label for="rkc">БИК РКЦ (ГРКЦ)</label>
-                        <input id="rkc" name="rkc" class="form-control" type="text" value="<%=rkc.orElse("")%>">
+                        <input id="rkc" name="rkc" class="form-control" type="text" value='<%=rkc.orElse("")%>'>
                     </div>
                 </div>
                 <div class="col-6">
                     <div class="form-group">
                         <% Optional<String> nameP = Optional.ofNullable(bank.getNameP()); %>
                         <label for="nameP">Наименование участника расчетов</label>
-                        <input id="nameP" name="nameP" class="form-control" type="text" value="<%=nameP.orElse("")%>" required>
+                        <input id="nameP" name="nameP" class="form-control" type="text" value='<%=nameP.orElse("")%>' required>
                     </div>
                     <div class="form-group">
                         <% Optional<String> newNum = Optional.ofNullable(bank.getNewNum()); %>
                         <label for="newNum">Банковский идентификационный код (БИК)</label>
-                        <% if(StringUtils.isEmpty(newNum.orElse(""))) { %>
-                            <input id="newNum" name="newNum" class="form-control" type="text" value="<%=newNum.orElse("")%>" required>
-                        <% } else { %>
-                            <input id="newNum" name="newNum" class="form-control" type="text" value="<%=newNum.orElse("")%>" required>
-                        <% } %>
+                        <input id="newNum" name="newNum" class="form-control" type="text" value='<%=newNum.orElse("")%>' required>
                     </div>
                     <div class="form-group">
                         <% Optional<String> phoneNum = Optional.ofNullable(bank.getPhoneNum()); %>
                         <label for="phoneNum">Телефон</label>
-                        <input id="phoneNum" name="phoneNum" class="form-control" type="text" value="<%=phoneNum.orElse("")%>">
+                        <input id="phoneNum" name="phoneNum" class="form-control" type="text" value='<%=phoneNum.orElse("")%>'>
                     </div>
                     <div class="form-group">
                         <% Optional<String> regNum = Optional.ofNullable(bank.getRegNum()); %>
                         <label for="regNum">Регистрационный номер</label>
-                        <input id="regNum" name="regNum" class="form-control" type="text" value="<%=regNum.orElse("")%>">
+                        <input id="regNum" name="regNum" class="form-control" type="text" value='<%=regNum.orElse("")%>'>
                     </div>
                     <div class="form-group">
                         <% Optional<String> okpo = Optional.ofNullable(bank.getOkpo()); %>
                         <label for="okpo">Код ОКПО</label>
-                        <input id="okpo" name="okpo" class="form-control" type="text" value="<%=okpo.orElse("")%>">
+                        <input id="okpo" name="okpo" class="form-control" type="text" value='<%=okpo.orElse("")%>'>
                     </div>
                     <div class="form-group">
                         <% String changingDate = "";
@@ -170,12 +166,12 @@
                             }
                         %>
                         <label for="changingDate">Дата последнего изменения записи</label>
-                        <input id="changingDate" name="changingDate" class="form-control" type="text" value="<%=changingDate%>" required>
+                        <input id="changingDate" name="changingDate" class="form-control" type="text" value='<%=changingDate%>' required>
                     </div>
                     <div class="form-group">
                         <% Optional<String> ksnp = Optional.ofNullable(bank.getKsnp()); %>
                         <label for="ksnp">Номер счета</label>
-                        <input id="ksnp" name="ksnp" class="form-control" type="text" value="<%=ksnp.orElse("")%>">
+                        <input id="ksnp" name="ksnp" class="form-control" type="text" value='<%=ksnp.orElse("")%>'>
                     </div>
                     <div class="form-group">
                         <% String inclusionDate = "";
@@ -184,7 +180,7 @@
                             }
                         %>
                         <label for="inclusionDate">Дата включения информации об участнике расчетов в ЭБД</label>
-                        <input id="inclusionDate" name="inclusionDate" class="form-control" type="text" value="<%=inclusionDate%>" required>
+                        <input id="inclusionDate" name="inclusionDate" class="form-control" type="text" value='<%=inclusionDate%>' required>
                     </div>
                     <div class="form-group">
                         <% String controlDate = "";
@@ -193,7 +189,7 @@
                             }
                         %>
                         <label for="controlDate">Дата контроля</label>
-                        <input id="controlDate" name="controlDate" class="form-control" type="text" value="<%=controlDate%>">
+                        <input id="controlDate" name="controlDate" class="form-control" type="text" value='<%=controlDate%>'>
                     </div>
                 </div>
             </div>
