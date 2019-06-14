@@ -63,11 +63,11 @@
                         <label for="pzn">Код типа участника расчетов</label>
                         <select name="pzn" id="pzn" class="custom-select">
                             <% for(Pzn item : pznList) { %>
-                            <option title='<%=item.getPzn()%>' value='<%=item.getPzn()%>'
+                            <option value='<%=item.getPzn()%>'
                                 <% if(StringUtils.equalsIgnoreCase(pzn.orElse(""), item.getPzn())) { %>
                                     selected
                                 <% } %>
-                            ><%=item.getName()%></option>
+                            ><%=item.getPzn()%> - <%=item.getName()%></option>
                             <% } %>
                         </select>
                     </div>
@@ -76,11 +76,11 @@
                         <label for="uer">Код пользователя системы электронных расчетов</label>
                         <select name="uer" id="uer" class="custom-select">
                             <% for(Uer item : uerList) { %>
-                            <option title='<%=item.getUer()%>' value='<%=item.getUer()%>'
+                            <option value='<%=item.getUer()%>'
                                 <% if(StringUtils.equalsIgnoreCase(uer.orElse(""), item.getUer())) { %>
                                     selected
                                 <% } %>
-                            ><%=item.getName()%></option>
+                            ><%=item.getUer()%> - <%=item.getName()%></option>
                             <% } %>
                         </select>
                     </div>
@@ -89,11 +89,11 @@
                         <label for="rgn">Код территории Российской Федерации</label>
                         <select name="rgn" id="rgn" class="custom-select">
                             <% for(Rgn item : rgnList) { %>
-                            <option title='<%=item.getRgn()%>' value='<%=item.getRgn()%>'
+                            <option value='<%=item.getRgn()%>'
                                 <% if(StringUtils.equalsIgnoreCase(rgn.orElse(""), item.getRgn())) { %>
                                     selected
                                 <% } %>
-                            ><%=item.getName()%></option>
+                            ><%=item.getRgn()%> - <%=item.getName()%></option>
                             <% } %>
                         </select>
                     </div>
@@ -108,11 +108,11 @@
                         <select name="tnp" id="tnp" class="custom-select">
                             <option value=''>НЕ ОПРЕДЕЛЕН</option>
                             <% for(Tnp item : tnpList) { %>
-                            <option title='<%=item.getTnp()%>' value='<%=item.getTnp()%>'
+                            <option value='<%=item.getTnp()%>'
                                 <% if(StringUtils.equalsIgnoreCase(tnp.orElse(""), item.getTnp())) { %>
                                     selected
                                 <% } %>
-                            ><%=item.getFullName()%></option>
+                            ><%=item.getTnp()%> - <%=item.getFullName()%></option>
                             <% } %>
                         </select>
                     </div>
@@ -141,7 +141,12 @@
                     <div class="form-group">
                         <% Optional<String> newNum = Optional.ofNullable(bank.getNewNum()); %>
                         <label for="newNum">Банковский идентификационный код (БИК)</label>
-                        <input id="newNum" name="newNum" class="form-control" type="text" value='<%=newNum.orElse("")%>' required>
+                        <input id="newNum" name="newNum" class="form-control" type="text" value='<%=newNum.orElse("")%>'
+                            <% if(StringUtils.isEmpty(newNum.orElse(""))) { %>
+                                required
+                            <% } else { %>
+                                readonly
+                            <% } %>>
                     </div>
                     <div class="form-group">
                         <% Optional<String> phoneNum = Optional.ofNullable(bank.getPhoneNum()); %>

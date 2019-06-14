@@ -111,11 +111,11 @@ public class BankController {
         return "redirect:/";
     }
 
-    @PostMapping("banks/{bik}/save")
-    public String saveBank(@PathVariable String bik, @ModelAttribute BankModel bankModel) {
+    @PostMapping("banks/*/save")
+    public String saveBank(@ModelAttribute BankModel bankModel) {
         Bank bank = bankModel.getBankBuilder().build();
         bankService.saveBank(bank);
 
-        return bik.equals("0") ? "redirect:/" : String.join("/","redirect:", "banks", bank.getNewNum());
+        return String.join("/","redirect:", "banks", bank.getNewNum());
     }
 }
